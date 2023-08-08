@@ -65,7 +65,7 @@ jobs:
           context: .
           file: "clang-format-docker/Dockerfile"
           push: true
-          tags: ${{ env.REGISTRY}}/jidicula/${{ env.IMAGE_NAME}}:${{ env.MAJOR_VERSION }}
+          tags: ${{ env.REGISTRY}}/lockshaw/${{ env.IMAGE_NAME}}:${{ env.MAJOR_VERSION }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             "UBUNTU_VERSION=${{ matrix.version-pair.ubuntu }}"
@@ -80,6 +80,6 @@ jobs:
           go-version: '^1.17'
           check-latest: true
       - name: Install ghcr-cleaner
-        run: go install github.com/jidicula/ghcr-cleaner@latest
+        run: go install github.com/lockshaw/ghcr-cleaner@latest
       - name: Run ghcr-cleaner
         run: ghcr-cleaner --token "${{ secrets.GHCR_DELETE_TOKEN }}" --packagename clang-format
