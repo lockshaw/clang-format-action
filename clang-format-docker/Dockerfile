@@ -4,8 +4,7 @@ FROM ubuntu:${UBUNTU_VERSION}
 ARG CLANG_FORMAT_VERSION
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-    && wget \
+    && apt-get install --no-install-recommends -y wget \
     # Clean cache
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
